@@ -15,11 +15,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'robolectric'
 
 repositories {
-        jcenter()
+    mavenCentral()
 }
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 21
     buildToolsVersion "21.1.1"
     packagingOptions {
         exclude 'LICENSE.txt'
@@ -30,7 +30,7 @@ android {
     defaultConfig {
         applicationId "org.sergez.uamobilecidemo"
         minSdkVersion 16
-        targetSdkVersion 19
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0.0-SNAPSHOT"
         testInstrumentationRunner "com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner"
@@ -39,6 +39,7 @@ android {
         release {
             runProguard true
             proguardFile 'proguard-rules.txt'
+            testCoverageEnabled true
         }
         debug {
             runProguard false
@@ -55,6 +56,9 @@ android {
         androidTest {
             setRoot('src/test')
         }
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 
